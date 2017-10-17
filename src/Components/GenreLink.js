@@ -8,7 +8,7 @@ class GenreLink extends React.Component {
 			display: 'inline-block',
 			borderRadius: 10,
 			padding: 5,
-			margin: 0,
+			margin: 4,
 		}
 
 		const textStyle = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, ControlLabel, FormControl, Button, Col, Checkbox, Form } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { Redirect } from 'react-router';
 import NavBar from '../Components/NavBar';
@@ -23,7 +23,6 @@ class SignUp extends React.Component {
   handleRegister(event) {
     var self = this;
     var apiUrl = settings.serverUrl + '/api/';
-    var self = this;
     var payload = {
       "name": this.state.name,
       "email": this.state.email,

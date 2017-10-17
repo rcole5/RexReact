@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouther, Redirect } from 'react-router';
+import { Redirect } from 'react-router';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 
 class NavBar extends React.Component {
@@ -21,7 +21,6 @@ class NavBar extends React.Component {
   }
 
 	render() {
-    const isLoggedIn = false;
     const currentStyle = {
       borderBottomWidth: 3, 
       borderBottomColor: '#777', 

@@ -64,6 +64,7 @@ class Movies extends React.Component{
       if (movie.title.includes(e.target.value)) {
         searchArray.push(movie);
       }
+      return;
     });
     self.setState({movies: searchArray});
   }

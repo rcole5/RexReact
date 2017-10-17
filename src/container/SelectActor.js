@@ -3,7 +3,6 @@ import { Redirect } from 'react-router';
 import axios from 'axios';
 import { Col, Image } from 'react-bootstrap';
 import NavBar from '../Components/NavBar';
-import ActorRole from '../Components/ActorRole';
 import GenreLink from '../Components/GenreLink';
 import { checkToken } from '../utils/authUtils';
 import { settings } from '../settings';
@@ -17,9 +16,12 @@ class SelectMovie extends React.Component {
       name: '',
       bio: '',
       dob: '',
+      age: 0,
       image: null,
       genres: [],
     }
+
+    this.getAge = this.getAge.bind(this);
   }
 
   componentWillMount() {
@@ -29,6 +31,7 @@ class SelectMovie extends React.Component {
       this.setState({loggedIn: false});
     }
   }
+
   componentDidMount() {
     const self = this;
     if (self.state.loggedIn) {
@@ -37,10 +40,15 @@ class SelectMovie extends React.Component {
         headers: {'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')}
       }).then(function(response){
         if (response.status === 200) {
+          var dob = new Date(response.data.data.dob);
+          var dobDay = dob.getDate();
+          var dobMonth = dob.getMonth();
+          var dobYear = dob.getFullYear();
           self.setState({
             name: response.data.data.name,
             bio: response.data.data.bio,
-            dob: response.data.data.dob,
+            dob: dobDay + "/" + dobMonth + "/" + dobYear,
+            age: self.getAge(response.data.data.dob),
             image: response.data.data.image,
           });
         }
@@ -57,8 +65,20 @@ class SelectMovie extends React.Component {
     }
   }
 
+  getAge(dob) {
+    var now = new Date();
+    var diff = now - new Date(dob).getTime();
+    return Math.floor(diff / (1000 * 60 * 60 * 24 * 365.25));
+  }
+
   render() {
     if (!this.state.loggedIn) {return <Redirect to="/" />;}
+    var actorInfoStyle = {
+      borderWidth: 2,
+      borderStyle: 'solid',
+      padding: 8,
+      backgroundColor: '#f9ffc1',
+    }
     return (
       <div>
         <NavBar path={this.props.location.pathname} />
@@ -74,8 +94,12 @@ class SelectMovie extends React.Component {
               })}
             </div>
             <br />
-            <b>dob: {this.state.dob}</b>
-            <p>bio: {this.state.bio}</p>
+            <div style={actorInfoStyle}>
+              <p><b>Birthday:</b> {this.state.dob}</p>
+              <b><b>Age:</b> {this.state.age}</b>
+            </div>
+            <h3>Bio</h3>
+            <p>{this.state.bio}</p>
           </Col>
         </div>
       </div>

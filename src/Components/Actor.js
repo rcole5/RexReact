@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom';
 import { Col, Thumbnail} from 'react-bootstrap';
 
 class Actor extends React.Component {
-	constructor(props) {
-		super(props);
-		
-	}
-
 	render() {
 		return(
 			<Col xs={12} md={4}>

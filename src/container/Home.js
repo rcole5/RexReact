@@ -1,7 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router';
-import {Thumbnail, Row, Col, Button } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import axios from 'axios';
 import NavBar from '../Components/NavBar';
 import Footer from '../Components/footer.js';

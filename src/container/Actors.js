@@ -64,19 +64,20 @@ class Actors extends React.Component{
       if (actor.name.includes(e.target.value)) {
         searchArray.push(actor);
       }
+      return;
     });
     self.setState({actors: searchArray});
   }
 
   sortByDateAcc(e) {
-    const self = this;
+    // const self = this;
     // const sortedActors = self.sortByDate(true, self.state.allactors);
     // self.setState({allactors: sortedActors, 
       // movies: sortedActors});
   }
 
   sortByDateDec(e) {
-    const self = this;
+    // const self = this;
     // const sortedActors = self.sortByDate(false, self.state.allactors);
     // self.setState({allactors: sortedActors, 
       // movies: sortedActors});

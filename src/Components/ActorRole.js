@@ -8,11 +8,11 @@ class ActorRole extends React.Component {
       display: 'inline-block',
       borderRadius: 25,
       padding: 8,
-      margin: 0,
+      margin: 4,
     };
 
     const textStyle = {
-      'color': '#000',
+      color: '#000',
       margin: 0,
       padding: 0,
     }
