@@ -15,18 +15,17 @@ import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
 	<Router>
-		<div>
-		  <Route exact={true} path="/" component={ Home } />
-      <Route exact={true} path='/movies' component={ Movies } />
-      <Route exact={true} path='/movies/:id' component={ SelectMovie } />
-      <Route exact={true} path='/actors' component={ Actors } />
-      <Route exact={true} path='/actors/:id' component={ SelectActor} />
-      <Route exact={true} path='/genres' component={ Genres } />
-      <Route exact={true} path='/genres/:id' component={ SelectGenre } />
-      <Route path='/login' component={ Login } />
-      <Route path='/register' component={ SignUp } />
-		/>
-		</div>
+	<div>
+            <Route exact={true} path="/" component={ Home } />
+            <Route exact={true} path='/movies' component={ Movies } />
+            <Route exact={true} path='/movies/:id' component={ SelectMovie } />
+            <Route exact={true} path='/actors' component={ Actors } />
+            <Route exact={true} path='/actors/:id' component={ SelectActor} />
+            <Route exact={true} path='/genres' component={ Genres } />
+            <Route exact={true} path='/genres/:id' component={ SelectGenre } />
+            <Route path='/login' component={ Login } />
+            <Route path='/register' component={ SignUp } />
+	</div>
 	</Router>	
 	), document.getElementById('root'));
 registerServiceWorker();
