@@ -4,7 +4,7 @@ import { Row, Col, Form, FormControl, FormGroup, DropdownButton, MenuItem } from
 import axios from 'axios'
 import NavBar from '../Components/NavBar';
 import Movie from '../Components/Movie';
-import {checkToken} from '../utils/authUtils';
+import {checkToken} from '../utils/utils';
 import { settings } from '../settings';
 
 class Movies extends React.Component{
@@ -94,13 +94,15 @@ class Movies extends React.Component{
           <h1>Movies</h1>
         </Col>
         <Col sm={4}>
-          <DropdownButton title="Sort By" id="btn-select-sort">
-            <MenuItem eventKey="1" value={true} onClick={ (e) => this.sortByDateAcc(e) }>Newest</MenuItem>
-            <MenuItem eventKey="2" onClick={ (e) => this.sortByDateDec(e) }>Oldest</MenuItem>
-          </DropdownButton>
+          <div className="align-middle" style={{ height: 69, padding: 20 }}>
+            <DropdownButton title="Sort By" id="btn-select-sort">
+              <MenuItem eventKey="1" value={true} onClick={ (e) => this.sortByDateAcc(e) }>Newest</MenuItem>
+              <MenuItem eventKey="2" onClick={ (e) => this.sortByDateDec(e) }>Oldest</MenuItem>
+            </DropdownButton>
+          </div>
         </Col>
         <Col sm={4}>
-        <Form>
+        <Form className="align-middle">
           <FormGroup controlId="formFilterMovie">
             Filter:
             <FormControl type="text" onChange= {

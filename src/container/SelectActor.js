@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Col, Image } from 'react-bootstrap';
 import NavBar from '../Components/NavBar';
 import GenreLink from '../Components/GenreLink';
-import { checkToken } from '../utils/authUtils';
+import { checkToken } from '../utils/utils';
 import { settings } from '../settings';
 
 class SelectMovie extends React.Component {

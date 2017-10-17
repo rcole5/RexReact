@@ -9,6 +9,7 @@ class Actor extends React.Component {
         <Link to={"/actors/" + this.props.id}>
           <Thumbnail src={this.props.image}>
             <h3>{this.props.name}</h3>
+            <b>Age: {this.props.age}</b>
             <p>{this.props.bio}</p>
           </Thumbnail>
         </Link>

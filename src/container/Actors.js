@@ -5,6 +5,7 @@ import axios from 'axios'
 import NavBar from '../Components/NavBar';
 import Actor from '../Components/Actor';
 import { settings } from '../settings';
+import { getAge } from '../utils/utils';
 
 class Actors extends React.Component{
 	constructor(props) {
@@ -13,7 +14,7 @@ class Actors extends React.Component{
     this.state = {
       loggedIn: false,
       actors: [],
-      sortNew: true,
+      sortYoung: true,
     }
 
     this.handleFilter = this.handleFilter.bind(this);
@@ -45,14 +46,14 @@ class Actors extends React.Component{
 
 	}
 
-  sortByDate(newest = true, data) {
-    if (newest) {
+  sortByDate(oldest = true, data) {
+    if (!oldest) {
       return data.sort((a, b) => {
-        return new Date(a.created_at.date).getTime() - new Date(b.created_at.date).getTime();
+        return new Date(a.dob).getTime() - new Date(b.dob).getTime();
       });
     } else {
       return data.sort((a, b) => {
-        return new Date(a.created_at.date).getTime() - new Date(b.created_at.date).getTime();
+        return new Date(a.dob).getTime() - new Date(b.dob).getTime();
       }).reverse();
     }
   }
@@ -70,17 +71,17 @@ class Actors extends React.Component{
   }
 
   sortByDateAcc(e) {
-    // const self = this;
-    // const sortedActors = self.sortByDate(true, self.state.allactors);
-    // self.setState({allactors: sortedActors, 
-      // movies: sortedActors});
+    const self = this;
+    const sortedActors = self.sortByDate(true, self.state.allactors);
+    self.setState({allactors: sortedActors, 
+      actors: sortedActors});
   }
 
   sortByDateDec(e) {
-    // const self = this;
-    // const sortedActors = self.sortByDate(false, self.state.allactors);
-    // self.setState({allactors: sortedActors, 
-      // movies: sortedActors});
+    const self = this;
+    const sortedActors = self.sortByDate(false, self.state.allactors);
+    self.setState({allactors: sortedActors, 
+      actors: sortedActors});
   }
 
 	render() {
@@ -95,10 +96,12 @@ class Actors extends React.Component{
           <h1>Actors</h1>
         </Col>
         <Col sm={4}>
+          <div style={{ height: 69, padding: 20 }}>
           <DropdownButton title="Sort By" id="btn-select-sort">
-            <MenuItem eventKey="1" value={true} onClick={ (e) => this.sortByDateAcc(e) }>Newest</MenuItem>
+            <MenuItem eventKey="1" value={true} onClick={ (e) => this.sortByDateAcc(e) }>Youngest</MenuItem>
             <MenuItem eventKey="2" onClick={ (e) => this.sortByDateDec(e) }>Oldest</MenuItem>
           </DropdownButton>
+          </div>
         </Col>
         <Col sm={4}>
         <Form>
@@ -116,6 +119,7 @@ class Actors extends React.Component{
                 id={actor.id}
                 image={actor.image}
                 name={actor.name}
+                age={ getAge(actor.dob) }
                 bio={actor.bio} />
             })}
         </div>
