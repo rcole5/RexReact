@@ -7,8 +7,10 @@ import Login from './container/Login';
 import SignUp from './container/SignUp';
 import Movies from './container/Movies';
 import Actors from './container/Actors';
+import Genres from './container/Genres';
 import SelectMovie from './container/SelectMovie';
 import SelectActor from './container/SelectActor';
+import SelectGenre from './container/SelectGenre';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render((
@@ -19,11 +21,11 @@ ReactDOM.render((
       <Route exact={true} path='/movies/:id' component={ SelectMovie } />
       <Route exact={true} path='/actors' component={ Actors } />
       <Route exact={true} path='/actors/:id' component={ SelectActor} />
+      <Route exact={true} path='/genres' component={ Genres } />
+      <Route exact={true} path='/genres/:id' component={ SelectGenre } />
       <Route path='/login' component={ Login } />
       <Route path='/register' component={ SignUp } />
-		  <Route exact={true} path="/test" render={ () => (
-			<h1>Test</h1>
-		)} />
+		/>
 		</div>
 	</Router>	
 	), document.getElementById('root'));
