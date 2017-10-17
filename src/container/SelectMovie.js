@@ -88,7 +88,8 @@ class SelectMovie extends React.Component {
             </div>
             <br />
             <b>Rating: {this.state.rating}</b>
-            <p>Description: {this.state.description}</p>
+            <h3>Description</h3>
+            <p>{this.state.description}</p>
             <b>Actors:</b>
             <br />
             { this.state.actors.map(function(actor) {
