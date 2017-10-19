@@ -6,6 +6,7 @@ import NavBar from '../Components/NavBar';
 import Footer from '../Components/footer.js';
 import Movie from '../Components/Movie';
 import Actor from '../Components/Actor';
+import { settings } from '../settings';
 
 class Home extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class Home extends React.Component {
     // Check if user is logged in before sending requests.
     if (this.state.loggedIn) {
       // Get latest movies.
-      axios.get('http://localhost:9000/api/movie/latest', {
+      axios.get(settings.serverUrl + '/api/movie/latest', {
         limit: 6,
         headers: {'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')},
       }).then(function(response) {
@@ -42,7 +43,7 @@ class Home extends React.Component {
       });
 
       // Get latest actors.
-      axios.get('http://localhost:9000/api/actor/latest', {
+      axios.get(settings.serverUrl + '/api/actor/latest', {
         limit: 6,
         headers: {'Authorization': 'Bearer ' + localStorage.getItem('jwtToken')},
       }).then(function(response) {
